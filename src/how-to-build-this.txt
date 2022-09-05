@@ -1,0 +1,10 @@
+
+# compile with:
+sdcc -c -mz80 main.c
+
+# link crt0 and SMSlib library with:
+sdcc -o SMS_BIOS_DUMP.ihx -mz80 --no-std-crt0 --data-loc 0xC000 crt0_sms.rel main.rel SMSlib.lib
+
+# create the final sms binary (64 KiB) with:
+ihx2sms -pm SMS_BIOS_DUMP.ihx SMS_BIOS_DUMP.sms
+
